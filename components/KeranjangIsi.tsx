@@ -99,9 +99,10 @@ export default function TambahKeranjang() {
     };
 
     const riwayat = JSON.parse(localStorage.getItem("riwayat") ?? "[]");
+    const sekarang = new Date ();
     localStorage.setItem(
       "riwayat",
-      JSON.stringify([...riwayat, { id: Date.now(), tanggal: new Date().toISOString(), ...pesanan }])
+      JSON.stringify([...riwayat, { id: sekarang.getTime(), tanggal: sekarang.toISOString(), ...pesanan }])
     );
     setStruk(pesanan);
 

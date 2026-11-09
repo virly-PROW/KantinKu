@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { menu, rupiah } from "@/data/menu";
 import FormTambah from "@/components/FormTambah";
+import TombolFavorit from "@/components/TombolFavorit";
 
 export default async function Detail({ params }: PageProps<"/menu/[id]">) {
   const { id } = await params;
@@ -18,6 +19,7 @@ export default async function Detail({ params }: PageProps<"/menu/[id]">) {
       <p className="text-slate-600">
         {item.stok === 0 ? "Habis" : `Stok ${item.stok}`}
       </p>
+      <TombolFavorit id={item.id} />
       {item.stok === 0 ? (
         <p className="mt-4 font-medium text-red-600">Menu ini habis.</p>
       ) : (
